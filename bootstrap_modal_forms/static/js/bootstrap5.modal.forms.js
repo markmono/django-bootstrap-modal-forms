@@ -56,7 +56,7 @@ const isFormValid = function (settings, callback) {
     const headers = new Headers();
     headers.append('X-Requested-With', 'XMLHttpRequest');
 
-    let btnSubmit = modal.querySelector('button:not(button[type="button"]');
+    let btnSubmit = form.querySelector('button:not(button[type="button"]');
     btnSubmit.disabled = true;
     fetch(form.getAttribute("action"), {
         headers: headers,
