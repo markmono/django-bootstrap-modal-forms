@@ -28,6 +28,7 @@ const modalFormCallback = function (settings) {
             form.setAttribute("action", settings.formURL);
             addEventHandlers(modal, form, settings)
         }
+        content.dispatchEvent(new Event('modal:afterRequest')); /* Custom send on modal load */
     });
 };
 
@@ -75,6 +76,7 @@ const isFormValid = function (settings, callback) {
 
             form.setAttribute("action", settings.formURL);
             addEventHandlers(modal, form, settings)
+            modal.querySelector('.modal-content').dispatchEvent(new Event('modal:afterRequest'));  /* Custom send event on fail */
         } else {
             callback(settings);
         }
@@ -203,7 +205,7 @@ const modalForm = function(elem, options) {
             dataElementId: null,
             dataKey: null,
             addModalFormFunction: null
-        }
+        },
     };
 
     let settings = {...defaults, ...options}
