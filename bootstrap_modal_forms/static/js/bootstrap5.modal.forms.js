@@ -206,13 +206,14 @@ const modalForm = function(elem, options) {
             dataKey: null,
             addModalFormFunction: null
         },
+        once: false,
     };
 
     let settings = {...defaults, ...options}
 
     elem.addEventListener('click', () => {
         modalFormCallback(settings);
-    })
+    }, {once: settings.once});
 
     return elem;
 }
